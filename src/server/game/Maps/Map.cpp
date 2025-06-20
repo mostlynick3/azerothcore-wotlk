@@ -50,18 +50,6 @@
 #include "ElunaLoader.h"
 #endif
 
-union u_map_magic
-{
-    char asChar[4];
-    uint32 asUInt;
-};
-
-u_map_magic MapMagic        = { {'M', 'A', 'P', 'S'} };
-uint32 MapVersionMagic      = 9;
-u_map_magic MapAreaMagic    = { {'A', 'R', 'E', 'A'} };
-u_map_magic MapHeightMagic  = { {'M', 'H', 'G', 'T'} };
-u_map_magic MapLiquidMagic  = { {'M', 'L', 'I', 'Q'} };
-
 static uint16 const holetab_h[4] = { 0x1111, 0x2222, 0x4444, 0x8888 };
 static uint16 const holetab_v[4] = { 0x000F, 0x00F0, 0x0F00, 0xF000 };
 
@@ -115,16 +103,16 @@ Map::Map(uint32 id, uint32 InstanceId, uint8 SpawnMode, Map* _parent) :
     }
 #endif
 
-    for (unsigned int idx = 0; idx < MAX_NUMBER_OF_GRIDS; ++idx)
-    {
-        for (unsigned int j = 0; j < MAX_NUMBER_OF_GRIDS; ++j)
-        {
-            //z code
-            GridMaps[idx][j] = nullptr;
-            setNGrid(nullptr, idx, j);
-        }
-    }
-      
+    // for (unsigned int idx = 0; idx < MAX_NUMBER_OF_GRIDS; ++idx)
+    // {
+    //    for (unsigned int j = 0; j < MAX_NUMBER_OF_GRIDS; ++j)
+    //    {
+    //        //z code
+    //        GridMaps[idx][j] = nullptr;
+    //        setNGrid(nullptr, idx, j);
+    //    }
+    // }
+
     _zonePlayerCountMap.clear();
 
     //lets initialize visibility distance for map
