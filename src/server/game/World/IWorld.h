@@ -588,7 +588,6 @@ public:
     [[nodiscard]] virtual std::string const& GetRealmName() const = 0;
     virtual void SetRealmName(std::string name) = 0;
     virtual void RemoveOldCorpses() = 0;
-    virtual void DoForAllOnlinePlayers(std::function<void(Player*)> exec) = 0;
 
 #if defined(MOD_ELUNA)
     std::unique_ptr<Eluna> eluna;

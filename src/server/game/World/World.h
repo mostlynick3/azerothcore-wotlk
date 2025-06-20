@@ -33,7 +33,9 @@
 #include <map>
 #include <unordered_map>
 
-#if defined(MOD_ELUNA)
+
+
+#if defined(MOD_ELUNA) // Should this be moved from World to WorldSessionMgr?
 class Eluna;
 #endif
 
@@ -297,11 +299,10 @@ public:
 
     void RemoveOldCorpses() override;
 
-    void DoForAllOnlinePlayers(std::function<void(Player*)> exec) override;
-
 #if defined(MOD_ELUNA)
-    std::unique_ptr<Eluna> eluna;
-    Eluna* GetEluna() const;
+    //std::unique_ptr<Eluna> eluna;
+    Eluna* eluna = nullptr;
+    //Eluna* GetEluna() const { return eluna; }
 #endif
 
 protected:
