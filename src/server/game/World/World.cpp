@@ -146,6 +146,9 @@ World::~World()
 
     VMAP::VMapFactory::clear();
     MMAP::MMapFactory::clear();
+#if defined(MOD_ELUNA)
+    delete eluna;
+#endif
 }
 
 std::unique_ptr<IWorld>& getWorldInstance()
@@ -177,11 +180,10 @@ void World::LoadConfigSettings(bool reload)
             LOG_ERROR("server.loading", "World settings reload fail: can't read settings.");
             return;
         }
-        
+
         sLog->LoadFromConfig();
         sMetric->LoadFromConfigs();
     }
-
 
     // Set realm id and enable db logging
     sLog->SetRealmId(realm.Id.Realm);
@@ -2819,7 +2821,3 @@ CliCommandHolder::~CliCommandHolder()
 {
     free(m_command);
 }
-
-#if defined(MOD_ELUNA)
-    Eluna* World::GetEluna() const { return eluna.get(); }
-#endif

@@ -25,6 +25,10 @@
 #include <list>
 #include <unordered_map>
 
+#if defined(MOD_ELUNA)
+class Eluna;
+#endif
+
 class Player;
 class WorldPacket;
 class WorldSession;
@@ -86,6 +90,12 @@ public:
     void SendServerMessage(ServerMessageType messageID, std::string stringParam = "", Player* player = nullptr);
 
     void DoForAllOnlinePlayers(std::function<void(Player*)> exec);
+
+#if defined(MOD_ELUNA)
+    //std::unique_ptr<Eluna> eluna;
+    Eluna* eluna = nullptr;
+    Eluna* GetEluna() const { return eluna; }
+#endif
 
 private:
     LockedQueue<WorldSession*> _addSessQueue;
