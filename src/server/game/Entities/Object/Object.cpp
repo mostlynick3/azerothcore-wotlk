@@ -55,6 +55,7 @@
 #if defined(MOD_ELUNA)
 #include "LuaEngine.h"
 #include "ElunaConfig.h"
+#include "WorldSessionMgr.h"
 #endif
 
 /// @todo: this import is not necessary for compilation and marked as unused by the IDE
@@ -3229,6 +3230,9 @@ void WorldObject::RemoveAllowedLooter(ObjectGuid guid)
 #if defined(MOD_ELUNA)
 Eluna* WorldObject::GetEluna() const
 {
+    if (sElunaConfig->IsElunaCompatibilityMode())
+        return sWorldSessionMgr->GetEluna();
+
     if (Map * map = FindMap())
         return map->GetEluna();
 
