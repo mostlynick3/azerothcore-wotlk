@@ -41,6 +41,7 @@
 #include <shared_mutex>
 
 #if defined(MOD_ELUNA)
+#include "LuaValue.h"
 class Eluna;
 #endif
 
@@ -515,6 +516,7 @@ public:
 #if defined(MOD_ELUNA)
     std::unique_ptr<Eluna> eluna;
     Eluna* GetEluna() const;
+    LuaVal lua_data = LuaVal({});
 #endif
 
 private:

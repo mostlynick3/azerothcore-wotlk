@@ -40,9 +40,10 @@
 
 #include "UpdateFields.h"
 
-class ElunaEventProcessor;
 #if defined(MOD_ELUNA)
+#include "LuaValue.h"
 class Eluna;
+class ElunaEventProcessor;
 #endif
 
 enum TempSummonType
@@ -640,11 +641,10 @@ public:
 
 #if defined(MOD_ELUNA)
     Eluna* GetEluna() const;
-#endif
-
-    // Event handler
     ElunaEventProcessor* elunaEvents;
     EventProcessor m_Events;
+    LuaVal lua_data = LuaVal({});
+#endif
 
 protected:
     std::string m_name;
