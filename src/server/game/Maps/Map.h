@@ -519,11 +519,6 @@ public:
     LuaVal lua_data = LuaVal({});
 #endif
 
-private:
-    void LoadMapAndVMap(int gx, int gy);
-    void LoadVMap(int gx, int gy);
-    void LoadMap(int gx, int gy, bool reload = false);
-
     uint32 GetCreatedGridsCount();
     uint32 GetLoadedGridsCount();
     uint32 GetCreatedCellsInGridCount(uint16 const x, uint16 const y);
